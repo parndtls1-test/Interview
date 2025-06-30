@@ -1,0 +1,12 @@
+Charter Communications
+- I am on the Python Design team, where we automate client orders using FastAPI and calls to a database
+- setup clients, locations, Circuit Ids
+- setup product for the client and design the circuit:
+      service, switch/routers, shelf, card, port, channel, ip
+- downgrades, upgrades, disconnects
+
+
+Day to Day
+- Add new products
+- Troubleshoot and fix code bugs.
+- code reviews, documentation, code demonstration, run tests and pytest.
