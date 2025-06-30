@@ -1,0 +1,21 @@
+tuple  immutable, ordered, iterable
+list   mutable, ordered, iterable, not hashable
+dict   mutable, iterable, ordered, not hashable
+set    mutable, unordered, iterable, unique, not hashable
+string immutable, ordered, iterable
+
+
+List of immutable types and hashable:
+int, float, decimal, complex, bool, string, tuple, range, frozenset, bytes
+
+List of mutable types NOT hashable:
+list, dict, set, bytearray, user-defined classes
+
+Hashable objects are commonly used as keys in dictionaries or elements in sets,
+where quick look-up times are desired. When an object is hashed, it produces a hash value,
+which is used as the key to store or retrieve the object efficiently in data structures like dictionaries and sets.
+
+
+
+
+
