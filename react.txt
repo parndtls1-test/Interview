@@ -1,0 +1,32 @@
+I haven’t worked directly with React professionally, but I have worked with javascript before. 
+
+I’ve built my own Django website duderemcode and worked with a lot of APIs and component-based development. I understand concepts like props, state, and one-way data flow, which React is built on.
+
+React is high on my list to learn next — I’ve already reviewed tutorials, and I’m confident I could become productive quickly. 
+---------------
+-Bootstrap is a popular open-source CSS framework for building responsive, web interfaces quickly using prebuilt components and grid layouts.
+example-creates a blue, styled button using Bootstrap's predefined classes.
+
+-Components-reusable, self-contained piece of UI. a javascript function or class that return JSX (js xml)
+-JSX-syntax extension for JS that lets you write HTML-like code
+-props=parameter-read-only inputs passed to components to customize their behavior or appearance.
+-state-built-in object that holds dynamic, local data that controls a component's behavior and rendering.
+-one way data flow-data flows from parent to child components via props, ensuring predictable and controlled UI updates.
+-hook-functions that let you use state and lifecycle features in functional components.
+
+vite - lightweight web server
+npm - node package manager
+
+npm create vite@latest --or version 4.1.0
+intall package(s)
+project name
+select framework - angular/vue/react/preact/lit/others (toolset)
+select variant(language) - javascript/typescript
+
+vscode - run webserver w/command npm run dev
+project structure-folders
+node_modules - 3rd party libraries/tools
+public - images/videos
+src - app component
+
+Virtual Dom - 
