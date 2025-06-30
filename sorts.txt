@@ -1,0 +1,6 @@
+merge sort - divide and merge
+binary search - midpoint search, high/lower
+quick sort - low items pivot high items
+bubble sort - 2 items at a time left to right
+insert sort - sorted and unsorted sublists
+select sort - find min_value
