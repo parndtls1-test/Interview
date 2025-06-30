@@ -1,0 +1,76 @@
+- What is FastApi?
+high-performance web framework for building APIs with Python
+---built on Starlette and Pydantic
+designed to be fast, intuitive, and type-safe
+with automatic validation and documentation out of the box.
+
+- What is FastApi UI? Swagger /docs
+useful, no need to use Postman
+see exactly what is being returned
+validation hints with pydantic models and type hints
+can speed up debugging
+
+- Difference between WSGI and ASGI?
+Web Server vs. Asynchronous Server Gateway Interface (Ideal for real-time features (chat, streaming)
+Concurrency	Synchronous only	Supports both sync and async code
+Use Case	Traditional web apps (Flask, Django*)	Modern async apps (FastAPI, Starlette, newer Django)
+WebSockets	❌ Not supported	✅ Full support
+Long-lived Tasks	❌ Blocking	✅ Non-blocking
+Performance	Good (for sync)	Better for high-concurrency & I/O-heavy apps
+Protocol	HTTP only	HTTP, WebSocket, SSE, etc.
+Examples	Flask, Django<3.0	FastAPI, Starlette, Django 3+ (with ASGI server)
+
+Flask app (WSGI) runs on Gunicorn + WSGI worker
+FastAPI app (ASGI) runs on Uvicorn or Hypercorn (ASGI servers)
+
+- WSGI worker thread?
+A thread within a worker process. that Handles one request at a time (per thread).
+- ASGI worker thread?
+ASGI workers don’t rely on threads for concurrency — 
+  they use async I/O and an event loop (via asyncio), but threads are still used in some situations.
+Runs an event loop (like asyncio) to manage thousands of concurrent connections.
+
+Handles HTTP, WebSockets, and Server-Sent Events.
+Uses await for non-blocking I/O instead of spawning threads.
+
+- Test Client?
+allows you to run pytest. fast and clean integration tests.
+
+- Docker
+creates container - run code consistently across multiple servers/platforms
+- Middleware
+
+- Request Middleware
+In FastAPI, you can use middleware to run logic before and/or after each request,
+ similar to Flask middlewares or Django middleware.
+
+- Register Middleware
+
+- Synchronous or asynchronous middleware
+Use async middleware unless you have a strong reason to use sync (e.g., legacy code).
+- course middleware
+
+- FastApi Dependecies
+a reusable, injectable piece of logic (like a function, class, or context)
+  that you can plug into path operations, sub-apps, middleware, and even other dependencies.
+- Pydantic
+
+- Core routines
+Core Routine	Purpose	How it Works
+Routing	Map URL + method to function	URL matching + parameter parsing
+Dependency Injection	Inject shared dependencies	Depends() decorator
+Middleware	Pre/post process requests	Async middleware functions
+Request/Response Model	Data validation & serialization	Pydantic models
+Event Handlers	Setup/cleanup at startup/shutdown	@app.on_event decorators
+Exception Handling	Catch and customize errors	@app.exception_handler
+Background Tasks	Async tasks after response	BackgroundTasks helper
+
+- Background tasks
+Tasks that run after returning the response to the client.
+Useful for non-blocking, async-like behavior without complex worker queues.
+Runs in the same process but after the main request finishes.
+
+Sending emails or SMS
+Writing logs or analytics
+Cleaning up temporary files
+Triggering async workflows (lightweight)
