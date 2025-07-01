@@ -1,38 +1,48 @@
-Notation	Name	Example
-O(1)	Constant	Accessing array element arr[i]
-O(log n)	Logarithmic	Binary search
-O(n)	Linear	Loop through array
+Describes how fast an algorithm grows relative to its input size (n).
+It tells you the worst-case performance in terms of time or space, ignoring machine specifics.
+“If I double the input size, how much longer will it take?”
+
+measuring how bad traffic gets as more cars enter a road —
+O(1) is a quiet backstreet
+O(n) is a busy main road
+O(n²) is rush hour at every intersection.
+
+common: best to worst
+Notation	  Name	        Example
+O(1)	      Constant	    Accessing array element arr[i]
+O(log n)	  Logarithmic	  Binary search
+O(n)	      Linear	      Loop through array
 O(n log n)	Linearithmic	Merge sort, Quick sort (avg case)
-O(n²)	Quadratic	Nested loops (bubble sort)
-O(2ⁿ)	Exponential	Recursive Fibonacci
-O(n!)	Factorial	Traveling Salesman (brute force)
+O(n²)	      Quadratic	    Nested loops (bubble sort)
+O(2ⁿ)	      Exponential	  Recursive Fibonacci
+O(n!)	      Factorial	    Traveling Salesman (brute force)
 
 🔁 Loop Patterns
-Code Pattern	Time Complexity
-for i in range(n)	O(n)
-for i in range(n): for j in range(n)	O(n²)
-while n > 1: n = n / 2	O(log n)
+Code Pattern	                        Time Complexity
+for i in range(n)	                    O(n)
+for i in range(n): for j in range(n):	O(n²)
+while n > 1: n = n / 2	              O(log n)
 
 📦 Data Structure Operations
 Operation	Array/List	Linked List	Hash Table	Stack/Queue	Binary Search Tree
-Access	O(1)	O(n)	N/A	O(n)	O(log n)*
-Search	O(n)	O(n)	O(1)	O(n)	O(log n)*
-Insert	O(n)	O(1)	O(1)	O(1)	O(log n)*
-Delete	O(n)	O(1)	O(1)	O(1)	O(log n)*
+Access	  O(1)	      O(n)	      N/A	        O(n)	      O(log n)*
+Search	  O(n)	      O(n)	      O(1)	      O(n)	      O(log n)*
+Insert	  O(n)	      O(1) 	      O(1)	      O(1)	      O(log n)*
+Delete	  O(n)	      O(1)	      O(1)	      O(1)	      O(log n)*
 
 *Assuming a balanced binary search tree
 
 🔍 Sorting Algorithms
-Algorithm	Time Complexity	Notes
-Bubble Sort	O(n²)	Simple, inefficient
-Insertion Sort	O(n²), O(n) best case	Good for small n
-Merge Sort	O(n log n)	Stable, uses extra space
-Quick Sort	O(n log n), O(n²) worst	Fast, in-place
-Heap Sort	O(n log n)	In-place, not stable
-Radix/Bucket	O(n) under conditions	Non-comparison sorts
+Algorithm	      Time Complexity	  Notes
+Bubble Sort	    O(n²)	            Simple, inefficient
+Insertion Sort	O(n²), O(n)       best case	Good for small n
+Merge Sort	    O(n log n)	      Stable, uses extra space
+Quick Sort	    O(n log n), O(n²) worst	Fast, in-place
+Heap Sort	      O(n log n)	      In-place, not stable
+Radix/Bucket	  O(n)              under conditions	Non-comparison sorts
 
 🧮 Space Complexity (Examples)
-Scenario	Space Complexity
+Scenario Space Complexity
 Storing single variable	O(1)
 Array of size n	O(n)
 Recursive call stack depth n	O(n)
