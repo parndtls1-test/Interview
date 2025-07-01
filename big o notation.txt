@@ -1,0 +1,48 @@
+Notation	Name	Example
+O(1)	Constant	Accessing array element arr[i]
+O(log n)	Logarithmic	Binary search
+O(n)	Linear	Loop through array
+O(n log n)	Linearithmic	Merge sort, Quick sort (avg case)
+O(n²)	Quadratic	Nested loops (bubble sort)
+O(2ⁿ)	Exponential	Recursive Fibonacci
+O(n!)	Factorial	Traveling Salesman (brute force)
+
+🔁 Loop Patterns
+Code Pattern	Time Complexity
+for i in range(n)	O(n)
+for i in range(n): for j in range(n)	O(n²)
+while n > 1: n = n / 2	O(log n)
+
+📦 Data Structure Operations
+Operation	Array/List	Linked List	Hash Table	Stack/Queue	Binary Search Tree
+Access	O(1)	O(n)	N/A	O(n)	O(log n)*
+Search	O(n)	O(n)	O(1)	O(n)	O(log n)*
+Insert	O(n)	O(1)	O(1)	O(1)	O(log n)*
+Delete	O(n)	O(1)	O(1)	O(1)	O(log n)*
+
+*Assuming a balanced binary search tree
+
+🔍 Sorting Algorithms
+Algorithm	Time Complexity	Notes
+Bubble Sort	O(n²)	Simple, inefficient
+Insertion Sort	O(n²), O(n) best case	Good for small n
+Merge Sort	O(n log n)	Stable, uses extra space
+Quick Sort	O(n log n), O(n²) worst	Fast, in-place
+Heap Sort	O(n log n)	In-place, not stable
+Radix/Bucket	O(n) under conditions	Non-comparison sorts
+
+🧮 Space Complexity (Examples)
+Scenario	Space Complexity
+Storing single variable	O(1)
+Array of size n	O(n)
+Recursive call stack depth n	O(n)
+Extra arrays in merge sort	O(n)
+
+📝 Tips
+Drop constants: O(2n) → O(n)
+
+Drop low-order terms: O(n + log n) → O(n)
+
+Think worst-case unless otherwise specified
+
+Hash tables are O(1) on average, but O(n) worst case (collisions)
