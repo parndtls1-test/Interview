@@ -1,0 +1,17 @@
+How to build a scalable API:
+Stateless design:
+    Design the API so that each request is self-contained, meaning the server doesn't need to remember past interactions with a client. 
+Resource-oriented design:
+    Model APIs around resources (like users, products) and provide clear endpoints for accessing, creating, updating, and deleting those resources. 
+API versioning:
+    Implement versioning to manage API evolution and allow for backward compatibility. 
+Rate limiting:
+    Implement rate limiting to prevent abuse and ensure fair resource allocation. 
+Caching:
+    Use caching to store and reuse frequently accessed data, reducing the load on the server. 
+Database optimization:
+    Optimize the database with indexing, query optimization, and partitioning. 
+Pagination:
+    Implement pagination for endpoints that return large datasets. 
+Horizontal and vertical scaling:
+    Utilize both vertical scaling (adding more resources to a single server) and horizontal scaling (adding more servers). 
