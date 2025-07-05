@@ -1,3 +1,4 @@
+Time Complexity
 Describes how fast an algorithm grows relative to its input size (n).
 It tells you the worst-case performance in terms of time or space, ignoring machine specifics.
 “If I double the input size, how much longer will it take?”
