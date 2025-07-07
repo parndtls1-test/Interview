@@ -1,0 +1,53 @@
+AWS
+- Lambda 
+What? Serverless, Event Driven, pay per use, stateless
+default timeout of 15 min.
+Layers - if you need to use pandas, add a custom pandas layer
+
+def lambda_handler(event, context):
+return {statusCode: 200, body: json.dumps('')}
+
+-S3
+import urllib.parse
+import boto
+s3 = boto3.client('s3')
+
+def lambda_handler(event, context):
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+
+    try:
+	    response = s3.get_object(Bucket=bucket, Key=key)
+		file_content = response['Body'].read().decode('utf-8')
+		
+		process_file(file_content)
+		return {'statusCode': 200,
+		'body': json.dumps('')}
+	except Exception as e:
+	    print(e)
+		raise e
+		
+def process_file(file_content):
+    print(file_content)
+	
+- EventBridge
+EventBridge is like a smart message bus that connects AWS services and your applications using events.
+1. file is uploaded. 2. event sent to the bridge 3. bridge routes event to 1 or more targets (lambda, SQS, Step Functions)
+
+- SQS - Simple Queue Service
+fully managed message queue that lets services communicate asynchronously by sending, storing, and receiving messages reliably at any scale.
+
+- Step Functions
+serverless orchestration service that lets you coordinate multiple AWS services into workflows using visual state machines.
+
+- Visual State Machine
+diagram or tool that shows how a system moves between different states based on events, conditions, or actions — like a flowchart for logic.
+[ValidateOrder] → [ChargeCard] → [SendConfirmation]
+
+- CodePipeline - Manages the workflow. cd service, automates the build, test and deploy.
+- CodeDeploy - automates the deployment of application code to EC2, lambda or servers.
+- CodeBuild - compiles the code, runs test.
+
+- xray - analyze the flow of app requests
+- cloudwatch - monitor resource utilization
+
