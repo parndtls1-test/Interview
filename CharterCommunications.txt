@@ -1,12 +1,14 @@
 Charter Communications
-- I am on the Python Design team, where we automate client orders, we setup multiple FastAPI endpoints 
-and also do calls to a database.
+- I am on the Python Design team, where we automate client orders via a pipeline, and we setup multiple FastAPI endpoints.
+
+The APIs can:
 - setup clients, locations, Circuit Ids
-- setup product for the client and design the circuit:
+- setup products/services for the client and also design the circuit:
     service, switch/routers, shelf, card, port, channel, ip
 - downgrades, upgrades, disconnects
+this is all using CRUD calls to a database.
 
 Day to Day
 - Add new products/services
 - Troubleshoot and fix code bugs.
-- code reviews, documentation, code demonstration, run code tests and use pytest.
+- code reviews, documentation, code demonstration, test out the code and setup pytest for the pipeline gitlab run.
