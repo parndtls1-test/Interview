@@ -1,0 +1,60 @@
+CI/CD stands for:
+CI (Continuous Integration):
+Automatically build and test code every time a developer commits.
+CD (Continuous Delivery/Deployment):
+Automatically deliver code to production (or staging) once it's tested and approved.
+
+Together, they automate and streamline the software delivery lifecycle.
+
+Basic CI/CD Pipeline Flow
+Code Commit → Developer pushes code to a Git repo (e.g., GitHub, GitLab).
+Build → Compile code, resolve dependencies.
+Test → Run unit/integration tests.
+Package → Bundle into an artifact (e.g., Docker image, zip).
+Deploy → Deploy to staging or production (automatically or with approval).
+Monitor → Check logs, errors, health metrics.
+
+| Stage          | Popular Tools                                     |
+| -------------- | ------------------------------------------------- |
+| **CI**         | GitHub Actions, GitLab CI, Jenkins, CircleCI      |
+| **CD**         | AWS CodeDeploy, ArgoCD, Spinnaker, GitHub Actions |
+| **Infra**      | Terraform, AWS CDK, Pulumi                        |
+| **Containers** | Docker, Kubernetes, EKS                           |
+
+Benefits
+Faster, safer deployments
+Fewer bugs in production
+Immediate feedback for developers
+Repeatable, version-controlled infrastructure and code releases
+
+YAML config example
+# .github/workflows/ci-cd-pipeline.yml
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run
