@@ -1,0 +1,51 @@
+AWS CDK is an infrastructure as code (IaC) tool that lets you define cloud resources using familiar programming languages like
+TypeScript, Python, Java, or C#, rather than JSON/YAML (like in CloudFormation).
+Infrastructure as Code
+
+Core Concepts
+Term	    Description
+App	      The entry point of your CDK application (e.g., cdk.App() in Python).
+Stack	    A unit of deployment (similar to a CloudFormation stack).
+Construct	A basic building block — represents one or more AWS resources.
+L1/L2/L3  Constructs	Low-to-high abstraction constructs (L1 = raw, L3 = opinionated patterns).
+
+| Command                          | Description                          |
+| -------------------------------- | ------------------------------------ |
+| `cdk init app --language python` | Initialize a new CDK app             |
+| `cdk synth`                      | Synthesize to CloudFormation YAML    |
+| `cdk diff`                       | Show differences from deployed stack |
+| `cdk deploy`                     | Deploy the stack to AWS              |
+| `cdk destroy`                    | Remove the deployed stack from AWS   |
+
+
+from aws_cdk import (
+    App, Stack,
+    aws_s3 as s3,
+)
+from constructs import Construct
+
+class MyStack(Stack):
+    def __init__(self, scope: Construct, id: str, **kwargs):
+        super().__init__(scope, id, **kwargs)
+
+        # Define an S3 bucket
+        s3.Bucket(self, "MyBucket")
+
+app = App()
+MyStack(app, "MyFirstStack")
+app.synth()
+
+
+ Tips
+CDK generates CloudFormation behind the scenes.
+Use context variables and cdk.json to manage envs/settings.
+CDK is modular – only include the AWS services you use.
+
+Useful Libraries
+aws-cdk-lib — main library for constructs.
+constructs — base library for all constructs.
+jsii — cross-language interoperability tool CDK is built on.
+
+jsii (short for JavaScript interop interface) is a tool and runtime developed by AWS that allows TypeScript
+libraries to be used in other programming languages like Python, Java, .NET (C#), and Go — without rewriting the code.
+
