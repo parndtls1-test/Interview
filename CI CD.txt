@@ -27,6 +27,9 @@ Fewer bugs in production
 Immediate feedback for developers
 Repeatable, version-controlled infrastructure and code releases
 
+Canary Deployment - role out to small % of servers for a time period, if all good increase that %.
+Blue Green Deployment - role out to green server has new code, if issues, immediately role back to Blue, old code.
+
 YAML config example
 # .github/workflows/ci-cd-pipeline.yml
 
