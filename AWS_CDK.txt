@@ -49,3 +49,7 @@ jsii — cross-language interoperability tool CDK is built on.
 jsii (short for JavaScript interop interface) is a tool and runtime developed by AWS that allows TypeScript
 libraries to be used in other programming languages like Python, Java, .NET (C#), and Go — without rewriting the code.
 
+CONS
+Slow updates - feature isn't readily available yet. and not supported right away.
+No multi-cloud support
+Steep Learning curve - 
