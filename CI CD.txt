@@ -58,3 +58,17 @@ jobs:
 
     - name: Run tests
       run
+
+Breakdown
+Triggers on: Push or PR to main
+
+Job 1 – build-test:
+Checks out code
+Sets up Python
+Installs dependencies
+Runs unit tests
+
+Job 2 – deploy:
+Runs after build-test
+Deploys using AWS CDK (can be swapped with Terraform, etc.)
+Uses GitHub Secrets for AWS credentials
