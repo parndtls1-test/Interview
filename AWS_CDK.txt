@@ -1,6 +1,6 @@
 AWS CDK is an infrastructure as code (IaC) tool that lets you define cloud resources using familiar programming languages like
 TypeScript, Python, Java, or C#, rather than JSON/YAML (like in CloudFormation).
-Infrastructure as Code
+** Allows you to create cloud resources as code itself.
 
 Core Concepts
 Term	    Description
