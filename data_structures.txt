@@ -5,7 +5,6 @@ set    mutable,  unordered, iterable, unique, not hashable
 frozenset immutable, unordered, iterable, hashable
 string immutable, ordered, iterable
 
-
 List of immutable types and hashable:
 int, float, decimal, complex, bool, string, tuple, range, frozenset, bytes
 
