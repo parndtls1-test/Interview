@@ -1,7 +1,7 @@
 tuple  immutable, ordered, iterable
-list   mutable, ordered, iterable, not hashable
-dict   mutable, iterable, ordered, not hashable
-set    mutable, unordered, iterable, unique, not hashable
+list   mutable,   ordered, iterable, not hashable
+dict   mutable,   ordered, iterable, not hashable
+set    mutable,  unordered, iterable, unique, not hashable
 string immutable, ordered, iterable
 
 
