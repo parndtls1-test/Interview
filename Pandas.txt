@@ -1,0 +1,54 @@
+Pandas
+Pandas is a powerful open-source Python library for data analysis and manipulation. It's built on top of NumPy and is used extensively in data science, machine learning, and data engineering.
+
+Dataframe - it’s a 2-dimensional table of data with labeled rows and columns.
+like an Excel spreadsheet or a SQL table
+
+import pandas as pd
+
+# Create a simple DataFrame from a dictionary
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['NYC', 'LA', 'Chicago']
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+     Name  Age    City
+0   Alice   25     NYC
+1     Bob   30      LA
+2  Charlie   35  Chicago
+
+| Feature               | Example                               |
+| --------------------- | ------------------------------------- |
+| **Read/Write Data**   | `pd.read_csv()`, `df.to_parquet()`    |
+| **Select columns**    | `df['Age']` or `df[['Name', 'City']]` |
+| **Filter rows**       | `df[df['Age'] > 28]`                  |
+| **Add new columns**   | `df['Senior'] = df['Age'] > 30`       |
+| **Group & summarize** | `df.groupby('City').mean()`           |
+| **Sort**              | `df.sort_values('Age')`               |
+| **Missing data**      | `df.fillna(0)`, `df.dropna()`         |
+
+cheat sheet
+df.head()         # First 5 rows
+df.tail(3)        # Last 3 rows
+df.shape          # (rows, columns)
+df.columns        # Column names, can slice [:5] 1st 5 cols. or list comprehension
+df.info()         # Summary, information, size/datatype, memory
+df.describe()     # Stats summary: count value(mean/min/percentiles/max)
+df.index 		  # Index value
+
+subset - df[[col1, col2, col3]]
+filter rows - 
+  df.loc[row](names) df.loc[df['airline'] == 'spirit'] you can use booleans & | ~(not)
+  df.iloc[1, 3 ](index location/ row, col)
+   or slices df.iloc[:5, :5]
+  df.query('(DepTime > 1130) and (Origin == "DRO")') external variable with @ symbol    @min_time
+  
+  
+  
+  
+  
+  
