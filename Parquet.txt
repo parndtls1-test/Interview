@@ -1,0 +1,60 @@
+Apache Parquet is a columnar, binary file format designed for efficient data storage and processing — especially for analytics and big data workflows.
+
+| Feature              | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| **Columnar storage** | Reads/writes only needed columns (great for analytics)              |
+| **Efficient**        | Smaller file sizes due to built-in compression (e.g., Snappy, Gzip) |
+| **Binary format**    | Not human-readable, but very fast for machines                      |
+| **Schema-based**     | Stores data with metadata like column names and types               |
+| **Cross-platform**   | Used with Pandas, Spark, Hive, AWS Athena, etc.                     |
+
+ Use Case
+Store tabular data efficiently
+Share data across systems (e.g., Python → Spark)
+Speed up analytics pipelines
+Work with large datasets (faster + smaller than CSV)
+
+# read file
+import pandas as pd
+df = pd.read_parquet("data.parquet", engine="pyarrow")  # or engine="fastparquet"
+
+# write
+df.to_parquet("output.parquet", engine="pyarrow", compression="snappy")
+
+# requirements
+pip install pyarrow        # recommended
+# OR
+pip install fastparquet
+
+# Advanced Options
+| Task                | Code Example                                             |
+| ------------------- | -------------------------------------------------------- |
+| Set compression     | `compression='gzip'`, `'snappy'`, etc.                   |
+| Select engine       | `engine='pyarrow'` or `'fastparquet'`                    |
+| Partitioned writing | Not supported by Pandas directly → use PyArrow or Spark  |
+| Append to file      | Not directly supported (you'll need to merge DataFrames) |
+
+# Other Tools That Use Parquet
+Apache Spark (.read.parquet())
+AWS Athena (query .parquet on S3)
+DuckDB, Dask, BigQuery, etc.
+
+# Example:
+import pandas as pd
+import pickle
+
+# --- Step 1: Load binary data from a .bin or .pkl file ---
+with open("data.bin", "rb") as f:
+    raw_data = pickle.load(f)  # adjust this if using another format
+
+# --- Step 2: Convert to DataFrame ---
+# If raw_data is a list of dicts or dict of lists, this works directly
+df = pd.DataFrame(raw_data)
+
+# --- Step 3: Write to Parquet ---
+df.to_parquet("data.parquet", engine="pyarrow", compression="snappy")
+
+print("✅ Successfully converted binary to Parquet!")
+
+
+
