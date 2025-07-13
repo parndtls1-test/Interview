@@ -1,0 +1,28 @@
+Node.js is a runtime environment that lets you run JavaScript on the server side — outside the browser.
+
+It’s built on:
+  The V8 JavaScript engine (same as Chrome)
+  A non-blocking, event-driven I/O model
+  Useful for building fast, scalable network applications
+
+Why?
+| Feature                  | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| ⚡ Non-blocking I/O       | Asynchronous, ideal for handling many requests |
+| 🧩 JavaScript everywhere | Use the same language on client & server       |
+| 📦 NPM ecosystem         | Huge module registry (libraries, tools, etc.)  |
+| 🔌 Great for APIs        | RESTful APIs, microservices, real-time apps    |
+
+Popular Use Cases
+REST APIs and microservices
+Real-time apps (e.g., chat using Socket.IO)
+Serverless functions (e.g., AWS Lambda with Node.js)
+Static file serving & backend for single-page apps (React, Vue)
+
+Bonus: Key Concepts to Know
+Event loop
+Callback vs Promise vs async/await
+Streams and buffers
+Middleware (especially with Express)
+Error handling (sync & async)
+Environment variables (process.env)
