@@ -1,0 +1,48 @@
+DataWarehouse
+-Centralised Repository
+-Serves Analytic Needs
+-Built for Data Retrieval
+-Contains Copies of Data
+
+Structured, relational data (tables, schemas)
+Uses SQL
+High-performance queries
+Good for BI tools (e.g., Tableau, Power BI)
+
+🔍 Examples:
+Amazon Redshift
+Google BigQuery
+Snowflake
+Microsoft Synapse
+
+
+DataMart
+-data is separated
+subset of a Data Warehouse — focused on a specific business line or team (e.g., marketing, finance, sales).
+
+Stores curated, department-specific data
+Optimized for fast access and reporting
+Derived from a larger Data Warehouse
+Structured & often read-only
+
+🔍 Example:
+If a Data Warehouse stores all company data, a marketing Data Mart might only include:
+  Customer leads
+  Campaign data
+  Email engagement metrics
+
+
+DataLake
+- stores raw, unstructured, semi-structured, or structured data — just as it arrives.
+
+✅ Key Features:
+Stores all data types (CSV, JSON, video, logs, etc.)
+Schema-on-read (define structure at query time)
+Ideal for big data, machine learning
+More flexible, less expensive
+
+🔍 Examples:
+AWS S3 + Athena
+Azure Data Lake Storage
+Hadoop HDFS
+Google Cloud Storage
