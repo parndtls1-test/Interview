@@ -1,0 +1,79 @@
+Data Warehousing Architecture Cheat Sheet
+🔧 Core Concepts
+Term	Description
+Fact Table	Contains measurable, quantitative data (e.g., sales, revenue, qty)
+Dimension Table	Contains descriptive attributes (e.g., customer name, date, region)
+ETL/ELT	Extract, Transform, Load (or Load then Transform) — processes for moving data
+Data Mart	A subject-specific subset of a data warehouse (e.g., marketing mart)
+OLAP	Online Analytical Processing — used for analysis and reporting
+OLTP	Online Transaction Processing — used for operational databases
+
+Star Schema
+Central Fact Table surrounded by denormalized Dimension Tables
+Simple structure, faster queries
+Preferred for BI tools
+
+             📅 Date
+               |
+🧍 Customer — 🟊 Sales Fact Table — 📦 Product
+               |
+           📍 Region
+
+Snowflake Schema
+Dimensions are normalized into sub-dimensions
+Saves space, more joins = slower
+More complex, but avoids data redundancy
+
+               📅 Date ← Calendar
+                  |
+🧍 Customer — 🟊 Sales Fact — 📦 Product ← Category
+                  |
+              📍 Region ← Country
+----------------------------------------------------------
+Fact Table Cheat Sheet
+Attribute	Description
+Grain	Level of detail (e.g., daily sales per store)
+Fact Types	- Additive (sum)
+
+                 - Semi-additive (avg, count)  
+                 - Non-additive (ratios, percentages)         |
+----------------------------------------------------------
+Dimension Table Cheat Sheet
+| Attribute                            | Description                                 |
+| ------------------------------------ | ------------------------------------------- |
+| **Attributes**                       | Descriptive info (e.g., product name, city) |
+| **Surrogate Key**                    | Integer key used instead of natural key     |
+| **Slowly Changing Dimensions (SCD)** | Track changes in dimensional data over time |
+
+| Type | Description                            |
+| ---- | -------------------------------------- |
+| 0    | No changes (static)                    |
+| 1    | Overwrite old data                     |
+| 2    | Keep historical versions (add new row) |
+| 3    | Track limited history in same row      |
+------------------------------------------------------------------------------------------------
+Schema Comparison
+| Feature           | ⭐ Star Schema          | ❄️ Snowflake Schema       |
+| ----------------- | ----------------------- | -------------------------- |
+| **Normalization** | Denormalized            | Normalized                 |
+| **Joins**         | Fewer                   | More                       |
+| **Query Speed**   | Faster                  | Slower                     |
+| **Simplicity**    | Easier for analysts     | More complex               |
+| **Storage**       | Larger (redundant data) | Smaller (less duplication) |
+------------------------------------------------------------------------------------------------
+Best Practices
+Define grain clearly before designing fact table
+Use surrogate keys for consistency
+Use Star Schema for performance & simplicity in BI tools
+Use Snowflake Schema when data duplication/storage is a concern
+Handle SCDs carefully (especially Type 2 for audit/history)
+------------------------------------------------------------------------------------------------
+Sample Fact Table
+| DateKey  | ProductKey | StoreKey | UnitsSold | Revenue |
+| -------- | ---------- | -------- | --------- | ------- |
+| 20230701 | 101        | 17       | 12        | 240.00  |
+
+Dimension Table (Product):
+| ProductKey | ProductName | Category    | Brand |
+| ---------- | ----------- | ----------- | ----- |
+| 101        | iPhone 15   | Electronics | Apple |
