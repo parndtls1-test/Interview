@@ -1,0 +1,72 @@
+What Are Scheduling Tools?
+Scheduling tools automate the execution of jobs, workflows, and tasks — such as data pipelines, batch scripts, ETL jobs, or system maintenance tasks.
+They help with:
+  Job orchestration
+  Time- or event-based triggering
+  Dependency management
+  Failure handling & alerts
+  Audit logging
+
+| Tool                   | Type                  | Key Use Case                       |
+| ---------------------- | --------------------- | ---------------------------------- |
+| **Control-M**          | Enterprise (BMC)      | Large-scale batch & job scheduling |
+| **Apache Airflow**     | Open-source           | Data pipelines, DAGs               |
+| **Cron**               | OS-based (Unix)       | Simple recurring jobs              |
+| **Autosys**            | Enterprise (Broadcom) | ETL, scripts, ERP jobs             |
+| **Azure Data Factory** | Cloud                 | Azure-based data workflows         |
+| **AWS Step Functions** | Cloud-native          | Serverless workflows               |
+
+Control-M
+Control-M by BMC is a leading enterprise job scheduler used for automating complex workflows
+across hybrid environments (on-prem + cloud).
+
+✅ Key Features:
+GUI for visualizing workflows
+Complex dependency management
+Supports file watchers, events, conditions
+SLA tracking & alerting
+Integration with modern tools (e.g., Airflow, AWS, GCP, etc.)
+REST APIs for automation
+
+**What You Can Do with Control-M**
+Schedule ETL pipelines across multiple systems
+Trigger jobs based on file arrivals or job completions
+Group jobs into flows (with predecessors and successors)
+Use calendars for time-based job control
+Re-run failed jobs with recovery options
+Track job history, success/failure, and execution time
+
+Sample Job Flow
+[Check File Arrival]
+         ↓
+ [Load Sales Data]
+         ↓
+[Transform Sales Data]
+         ↓
+ [Email Daily Report]
+
+
+| Term             | Meaning                                   |
+| ---------------- | ----------------------------------------- |
+| **Job**          | A script, ETL task, or command to execute |
+| **Folder**       | Group of jobs or subflows                 |
+| **Condition**    | A rule that must be met before job runs   |
+| **Calendar**     | Scheduling based on date/time rules       |
+| **Smart Folder** | A reusable template with variables        |
+| **Alert**        | Notification rule (e.g., on failure)      |
+
+When to Use Control-M
+Enterprise-scale, hybrid workloads
+When auditability and SLAs are important
+Need for visual control, alerting, and retry logic
+
+Control-M vs Airflow (Quick Glance)
+| Feature      | Control-M           | Apache Airflow            |
+| ------------ | ------------------- | ------------------------- |
+| Setup        | Commercial GUI tool | Python-based, open-source |
+| UX           | Visual, drag-drop   | Code-as-DAG (Python)      |
+| Dependencies | Built-in, complex   | Code-defined, flexible    |
+| Cost         | Paid license        | Free                      |
+| Best for     | Legacy + modern mix | Data engineering teams    |
+
+
