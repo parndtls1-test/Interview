@@ -12,7 +12,7 @@ Star Schema
 Central Fact Table surrounded by denormalized Dimension Tables
 Simple structure, faster queries
 Preferred for BI tools
-All data is in one table.
+
              📅 Date
                |
 🧍 Customer — 🟊 Sales Fact Table — 📦 Product
@@ -77,3 +77,6 @@ Dimension Table (Product):
 | ProductKey | ProductName | Category    | Brand |
 | ---------- | ----------- | ----------- | ----- |
 | 101        | iPhone 15   | Electronics | Apple |
+
+Normalize, you can save storage.
+DeNormalize, you can improve performance.
