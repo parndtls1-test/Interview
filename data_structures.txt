@@ -18,7 +18,6 @@ which is used as the key to store or retrieve the object efficiently in data str
 | Feature             | List (`[]`)            | Tuple (`()`)                      |
 | ------------------- | ---------------------- | --------------------------------- |
 | **Mutable**         | ✅ Yes                 | ❌ No (Immutable)                |
-| **Syntax**          | `my_list = [1, 2]`     | `my_tuple = (1, 2)`               |
 | **Performance**     | Slower (more flexible) | Faster (less overhead)            |
 | **Can be changed**  | ✅ Add/remove items   | ❌ Fixed after creation           |
 | **Use in dict key** | ❌ No (unhashable)    | ✅ Yes (if all items are hashable)|
