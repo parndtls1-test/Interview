@@ -1,0 +1,27 @@
+Kafka
+- Topics - logs of stored messages, immutable. event that has happened.
+           json formatted (key/value), can have thousands in Kafka cluster
+		   -topic is NOT a queue
+- Partitions - Single Topic log broken up into multiple logs.
+             can distribute workloads across a cluster and preserve message order when needed.
+- Brokers - Network of machines that run kafka server process.
+			Responsible for handling incoming requests to write new 
+			messages to partitions. And read partitions.
+
+    Cluster contains the Brokers contain the Topic/Partitions
+- Repetition - configurable, replication factor(1 to N copies).
+           Each broker can contain those copies(Followers). Leader & Followers. If broker fails a new leader is needed and partitions will need to get copied.
+- Producers - Client apps that write into a cluster.
+      ProducerRecord("topic name", key, value)
+- Consumers - client components outside of the cluster responsible for reading data from the Topics. If consumer goes down and comes backup, offset tracking, stored in a special purpose internal topic.
+    consumers can scale(consumer groups), can process only 1 at a time from multi partitions. parallelize, can be 3 consumer a working in parallel because they are separate processes.
+- Schema Registry - Standalong process, that runs on a external machine to the kafka brokers. schemas are going to change. NOT a part of apache kafka. can be redundant. produce or consume operation can be stopped if things don't match.
+
+- Kafka Connect - talk to items that are NOT kafka. ecosystems of pluggable connectors. client app w/own distribute system that runs connectors and produces into kafka. stateful. find connectors on confluent connect hub
+    Example: DB/SAAS -> Kafka Connect -> Kafka Cluster -> Kafka Connect -> App/DB/SAAS
+
+- Stream Processing - Flink - Contains (Transform, Filter, Join, Aggregate, Window, Query)
+    APIs (High to Low) - SQL, Table, DataStream
+	Data Pipelines, Complex Event Processing, Large volume of events, Powerful time operators, Low code SQL support, Batch Processing, Independent Cluster
+	
+	Kafka Streams - Microservices writte in Java, Data Pipelines, Complex Event Processing, low to medium volume of events, Powerful time operators, Kafka Consumer Group
