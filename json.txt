@@ -40,3 +40,31 @@ dumps = string
 dump = file
 loads = string input
 load = file input
+--------------------------------------------------
+from pydantic import BaseModel
+
+class User(BaseModel):
+    id: int
+    name: str
+    active: bool = True
+
+user = User(id=1, name="Alice")
+data = user.model_dump()
+# {'id': 1, 'name': 'Alice', 'active': True}
+--------------------------------------------------
+user.model_dump(include={"id", "name"})
+user.model_dump(exclude={"active"})
+user.model_dump(by_alias=True)
+user.model_dump(exclude_unset=True)
+
+| Option                  | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `include`               | Only include these fields                  |
+| `exclude`               | Skip these fields                          |
+| `by_alias=True`         | Use field aliases as keys                  |
+| `exclude_unset=True`    | Only include fields explicitly set by user |
+| `exclude_defaults=True` | Exclude values that are the default        |
+| `exclude_none=True`     | Exclude fields with `None`                 |
+
+
+
