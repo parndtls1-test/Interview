@@ -1,0 +1,91 @@
+-How to ensure the security of API integration?
+    1. Only use https, redirect http traffic to https
+	   set secure and httponly flags on cookies
+	2. Authentication/Authorization
+	  - use API keys/tokens 
+	    env variables/ secrets manager
+		use tokens in headers not URLs.
+	  - Oauth2 - user-level access w/Scopes
+	  - Validate JWT signatures, expiration, and issuer.	
+	3. Input Validation & Sanitization
+	    use pydantic model schemas to validate requests
+		avoid accepting raw input in SQL queries, SQL injection attacks.
+		sanitize file uploads/paths. to avoid path traversal attacks.
+	4. rate limiting to prevent Denial of Service attacks.
+	    tools - slowapi, or API gateway to apply limits
+	  Throttling
+		limit client to 100 requests per minute or less.
+	5. Timeouts & Retry Logic
+	  - always set timeouts on API calls
+	     requests.get(url, timeout=5)
+	  - use exponential backoff for retries
+    6. Store Secrets Securely
+	   - no hardcoding keys/passwords
+	   - use .env files/AWS secrets manager/ key vault
+	7. Secure Headers  Set headers like:
+          X-Content-Type-Options: nosniff
+          X-Frame-Options: DENY
+          Strict-Transport-Security
+	8. Logging & Monitoring
+	    log access and errors, but not secrets or tokens.
+		monitor unusual traffic patterns or failed auth attempts.
+	9. Access Control
+	    limit access to know IP ranges or auth clients
+		used scoped tokens or RBAC for user level APIs
+	10. Keep Dependencies Updated
+        Use pip-audit, safety, or dependabot to check for vulnerabilities.
+        Regularly patch libraries, especially for crypto, networking, or auth.
+		
+
+
+How do you handle errors in API integration?
+    1. FastAPI has builtin exception handling. HTTPException
+	   raise HTTPException(status_code=404, detail="Item not found")
+    2. custom exception class
+	3. Pydantic Validation errors. payload missing a required field
+	4. Handling Integration.
+	    - use try except block calling external apis
+		- raise different messages for distinct status codes 502/504/500
+	5. Use test client/pytest to test how errors are returned
+	
+	
+	
+What are the different API integration patterns?
+    how you structure and connect different parts of an application or system using FastAPI—whether it's with databases, external APIs, background jobs, messaging systems, or microservices.
+	
+	| Pattern                   | Tools                         | Use Case                            |
+| ------------------------- | ----------------------------- | ----------------------------------- |
+| Database                  | SQLAlchemy, Tortoise          | CRUD, persistent storage            |
+| External API              | `httpx`, `requests`           | Fetch or sync with other services   |
+| Background Tasks          | `BackgroundTasks`, Celery     | Offload async work                  |
+| Messaging (Pub/Sub)       | Kafka, RabbitMQ, SQS          | Event-driven microservices          |
+| Authentication            | OAuth2, JWT, Auth0            | Secure API endpoints                |
+| Microservice Architecture | Routers, service mesh, Docker | Scalable backend services           |
+| Testing & Mocks           | Pytest, TestClient            | Unit/integration testing            |
+| Logging & Monitoring      | OpenTelemetry, Prometheus     | Observability and production health |
+
+
+Best practices for designing FastAPIs?
+    1. organize by feature or domain, not by filetype
+	   use APIRouter to split endpoints into modules
+    2. Use Pydantic models for validation
+	3. Use Depends() for authentication/sessions/configs
+	4. Environment-Specific Settings
+	5. Use Asynchronous Code
+	6. Use Error Handling & Custom Exceptions
+	7. Use Security best practices tokens/https
+	8. Test with pytest/TestClient
+	9. Use performance Optimization (async, keep lean queries)
+	10. Use Versioning and documentation (tags, descriptors, summary)
+	11. Observe and Log
+	12. graceful startup/shutdown events (open close DB connections)
+	13. Use Code linting, (Black formatter), use automated tests Continuos Integration in github/gitlab
+	14. Avoid anti-patterns (all code in main.py, hardcode secrets, )
+	
+How do you debug python code?
+    - VS code with breakpoints, can inspect variables in realtime. and step through the code with ease.
+	- write unittest to isolate bugs- 
+	- try/except blocks to catch errors
+	- use type hinting in functions
+	- black formatter
+	- take breaks to stay fresh.
