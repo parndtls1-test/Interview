@@ -1,0 +1,36 @@
+Django Advanced 
+
+MVT - Models/Views/Templates
+
+Object-Relational Mapper (ORM) is a powerful tool that lets you interact with your database using Python code instead of raw SQL.
+
+mixin - is a reusable class that provides additional behavior to a view or model when inherited, without being a complete class on its own.
+
+class Meta(): # inner class of model that contains extra info that isn't part of the fields or logic
+    abstract = True # tell Django don't create a table for this as this class will be used as a Base class that will be inherited by other models.
+	
+many=True is used when serializing or deserializing multiple objects
+
+Serializer - converts data types (Django models) into Python datatypes (and JSON) for APIs, and vice versa.	
+
+| Feature           | **PostgreSQL**                                                  | **MySQL**                                      |
+| ----------------- | --------------------------------------------------------------- | ---------------------------------------------- |
+| **Type**          | Object-relational database (ORDBMS)                             | Relational database (RDBMS)                    |
+| **Standards**     | Highly standards-compliant (ACID, ANSI SQL)                     | Standards-compliant, but more lenient          |
+| **Features**      | Rich features (CTEs, window functions, JSONB, full-text search) | Fewer advanced features by default             |
+| **Extensibility** | Highly extensible (custom types, functions)                     | Limited extensibility                          |
+| **Performance**   | Better for complex queries & large datasets                     | Faster for read-heavy or simple workloads      |
+| **Concurrency**   | Uses MVCC (great for concurrent writes)                         | Can have locking issues under high write loads |
+| **JSON Support**  | Advanced (JSONB, indexing)                                      | Basic (less efficient)                         |
+| **Community**     | Strong, open-source, developer-focused                          | Strong, backed by Oracle, widely adopted       |
+| **Use Cases**     | Analytics, geospatial data, complex logic                       | Web apps, simple APIs, WordPress, e-commerce   |
+
+PostgreSQL
+Use PostgreSQL if you need advanced features, data integrity, and flexibility.
+Use MySQL if you want a fast, simple, and widely supported database for straightforward applications.
+
+VARCHAR stands for Variable-Length Character String.
+ 1 to 1 (user to avatar)
+ 1 to many (user to posts)
+ many to many (user to class to instructor) two 1 to many 
+
