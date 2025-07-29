@@ -1,5 +1,5 @@
 Retry_Logic:
-APIs sometimes fail due to transient issues like network glitches, temporary downtime, or throttling. Retry logic helps recover from these failures gracefully.
+APIs sometimes fail due to issues like network glitches, temporary downtime, or throttling. Retry logic helps recover from these failures gracefully.
 
 Key Patterns:
 Exponential backoff: Wait longer between each retry (1s, 2s, 4s, 8s, etc.)
