@@ -1,19 +1,42 @@
 import json
 
-# some JSON:
-x = '{"name":"John", "age":30, "city":"New York"}'
-xx = '{"name":"John", "other": {"city":"New York"}}'
+Serialization (Python → JSON)
+| Function             | Description                               | Example                                   |
+| -------------------- | ----------------------------------------- | ----------------------------------------- |
+| json.dumps(obj)      | Converts Python object to JSON **string** | `json_str = json.dumps({"a": 1})`         |
+| json.dump(obj, fp)   | Writes Python object as JSON to **file**  | `json.dump(data, open("file.json", "w"))` |
 
-# parse x:
-y = json.loads(x)
-yy = json.loads(xx)
+Deserialization (JSON → Python)
+| Function               | Description                                      | Example                              |
+| ---------------------- | ------------------------------------------------ | ------------------------------------ |
+| `json.loads(json_str)` | Converts JSON **string** to Python object        | `obj = json.loads('{"a": 1}')`       |
+| `json.load(fp)`        | Reads JSON from file and parses to Python object | `obj = json.load(open("file.json"))` |
 
-# the result is a Python dictionary:
-print(y["age"])
-print(y["other"]["city"])
+json.dumps(obj, indent=2, sort_keys=True, ensure_ascii=False)
+indent=2: Pretty print
+sort_keys=True: Sort keys alphabetically
+ensure_ascii=False: Allow Unicode characters
 
-json.dump(object) # or dumps
-json.load()
+from pydantic import BaseModel
 
-also model_dump
+class User(BaseModel):
+    id: int
+    name: str
 
+user = User(id=1, name="Alice")
+
+
+| Action                       | Example                                               |
+| ---------------------------- | ----------------------------------------------------- |
+| Convert model to dict        | `user.dict()`                                         |
+| Convert model to JSON string | `user.json()`                                         |
+| Create model from dict       | `User(**data_dict)`                                   |
+| Create model from JSON       | `User.parse_raw(json_str)`                            |
+| Save model to JSON file      | `with open("u.json", "w") as f: f.write(user.json())` |
+| Load model from file         | `User.parse_file("u.json")`                           |
+
+Notes
+dumps = string
+dump = file
+loads = string input
+load = file input
