@@ -1,5 +1,5 @@
 Pandas
-Pandas is a powerful open-source Python library for data analysis and manipulation. It's built on top of NumPy and is used extensively in data science, machine learning, and data engineering.
+open-source Python library for data analysis and manipulation. It's built on top of NumPy and is used extensively in data science, machine learning, and data engineering.
 
 Dataframe - it’s a 2-dimensional table of data with labeled rows and columns.
 like an Excel spreadsheet or a SQL table
