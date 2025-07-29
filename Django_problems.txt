@@ -1,0 +1,29 @@
+Django Problems
+
+1. Ajax, to give us 10 questions and not change the url from question to question.
+2. user logon system.
+    forget password, reset emails, how to setup through AWS
+3. If new subjects/questions how to add for all users
+4. how to pick 10 lowest score questions from the database and randomize them
+    also randomize the answers, there are no ABCD
+5. what to do if there are less than 10 questions left to answer.	
+6. frontend items, Change background color from month to month. flex buttons.
+7. After questions are answered, redirect the user to the subject page, not home.
+8. sql injection on score_up/score_down, 
+    user can see the url with userid and score amount 
+9. add crontabs to reset scores over certain periods of time.
+
+Future:
+- Divide python into 4 groups, easy to advanced.
+- Add AI, connect to ChatGPT, prompt it to give you questions about subject
+    (this can be a users worst subject) 	
+    parse result (question/answers) into the system. then score.
+- what other subjects can I add? programming languages. Go, java, etc...
+- multiple choice answers.
+- complete adding AWS Dev questions
+- instead of resetting to subject score to 80, let user choose with slider or input.
+- maybe update to react
+
+
+
+	
