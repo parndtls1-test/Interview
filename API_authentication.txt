@@ -1,0 +1,12 @@
+- How does authentication work in API integration?
+     how you prove your identity to the API you're calling. It ensures only authorized clients can access protected resources. 
+
+1. API Key
+    client uses a unique key, sends it within the headers
+2. Basic Auth
+    username and password sent with base64 encoding
+3. Bearer OAuth2 token
+    client includes this token in header of requests
+4. OAuth2 with refresh token
+    use token in headers, if expired use a refresh token to get a new one
+5. Session/Cookies - if using web apps
