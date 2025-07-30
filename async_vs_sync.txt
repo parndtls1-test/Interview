@@ -1,0 +1,31 @@
+SYNC (Synchronous)
+Definition: Code runs one task at a time, waiting for each to finish.
+
+Use when:
+Tasks are CPU-bound or don’t involve waiting (e.g., math, file parsing).
+Simplicity is more important than speed.
+
+ASYNC (Asynchronous)
+Allows concurrent execution of tasks, especially good for I/O-bound tasks (e.g., web requests, DB calls).
+
+Use when:
+Your function waits a lot (network, disk).
+You want more efficiency with many I/O tasks.
+
+async def task(n):
+    print(f"Task {n} start")
+    await asyncio.sleep(2)
+    print(f"Task {n} end")
+
+async def main():
+    await asyncio.gather(task(1), task(2), task(3))
+
+asyncio.run(main())
+# Output
+Task 1 start
+Task 2 start
+Task 3 start
+(wait 2 seconds)
+Task 1 end
+Task 2 end
+Task 3 end
