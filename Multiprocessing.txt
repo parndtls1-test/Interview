@@ -1,0 +1,37 @@
+Concurrency
+Concurrency is about managing multiple tasks at once, but not necessarily executing them simultaneously.
+Tasks appear to run at the same time via scheduling (e.g., using asyncio, threads).
+Good for I/O-bound problems (e.g., file, network, DB access).
+
+Parallelism
+Parallelism is about doing multiple tasks literally at the same time, on multiple CPU cores.
+Tasks run truly simultaneously.
+Good for CPU-bound problems (e.g., number crunching, image processing).
+
+Concurrency
+import asyncio
+
+async def task(name):
+    print(f"{name} starting")
+    await asyncio.sleep(1)
+    print(f"{name} done")
+
+async def main():
+    await asyncio.gather(task("A"), task("B"))
+
+asyncio.run(main())
+
+Parallelism
+from multiprocessing import Process
+
+def task(name):
+    print(f"{name} working")
+
+p1 = Process(target=task, args=("A",))
+p2 = Process(target=task, args=("B",))
+
+p1.start()
+p2.start()
+
+p1.join()
+p2.join()
