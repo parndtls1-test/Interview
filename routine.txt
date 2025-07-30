@@ -1,0 +1,19 @@
+ Subroutine
+A subroutine is a traditional function.
+It runs from start to finish, optionally returns a value.
+It cannot pause and resume—just runs once per call.
+
+Coroutine
+A coroutine is a special kind of function that can pause and resume.
+Often used in asynchronous programming or generators.
+Created using async def or def + yield.
+
+# Async coroutine
+async def fetch_data():
+    await asyncio.sleep(1)
+    return "data"
+
+# Generator coroutine
+def simple_counter():
+    yield 1
+    yield 2
