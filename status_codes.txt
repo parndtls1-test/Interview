@@ -9,6 +9,7 @@ Server Error  500
 Most Common
 100 Continue
 200 OK - Depends on Get/Post/Put/Delete
+201 Created resource
 301 Moved Permanently 
 302 Found
 400 Bad data sent to server
