@@ -1,0 +1,18 @@
+Status Codes
+
+Informational 100
+Successful    200 
+Redirection   300 
+Client Error  400 
+Server Error  500
+
+Most Common
+100 Continue
+200 OK - Depends on Get/Post/Put/Delete
+301 Moved Permanently 
+302 Found
+400 Bad data sent to server
+401 User must be logged in
+403 Request valid but server refuses to process it (not valid creds)
+404 Not found
+500 Internal Server Error
