@@ -1,0 +1,60 @@
+Terraform turns your infrastructure into code 
+
+resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+Terraform understands how to:
+  Create that instance
+  Track it in state
+  Update or delete it later
+  
+  Key Concepts
+1. Resources
+The building blocks of your infrastructure: servers, networks, databases, etc.
+
+2. Providers
+The plugins Terraform uses to interact with services like:
+AWS
+GCP
+Azure
+Kubernetes
+GitHub
+Cloudflare
+
+
+hcl
+Copy
+Edit
+provider "aws" {
+  region = "us-west-2"
+}
+3. State
+Terraform keeps a .tfstate file that stores the current state of your infrastructure. This lets it determine what’s changed between your code and real infrastructure.
+
+4. Plan and Apply
+terraform plan shows you what changes will happen
+terraform apply actually makes the changes
+
+5. Modules
+Reusable units of Terraform code that help organize and share infrastructure patterns.
+
+🏗️ What You Can Build with Terraform
+AWS EC2 instances, S3 buckets, RDS databases
+
+Kubernetes clusters
+GCP Cloud Functions and Firestore
+Azure VMs and load balancers
+DNS zones, CDN setups, and GitHub repositories
+
+🔁 Why Use Terraform?
+Benefit	Description
+Multi-cloud	One tool for AWS, GCP, Azure, and more
+Version control	Track infrastructure in Git just like application code
+Automation	Repeatable deployments with no manual steps
+Visibility	See what will change before applying it
+Scalability	Handle complex infra with reusable modules
+
+
+
