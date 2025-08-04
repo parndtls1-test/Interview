@@ -1,0 +1,18 @@
+- Telemetry -
+automatic collection, transmission, and analysis of data from a system or device to a remote location for monitoring, diagnostics, or performance analysis.
+
+Automatic Reporting: Telemetry sends data without human intervention.
+Remote Monitoring: The data goes to a central server, cloud platform, or dashboard.
+Real-Time Insights: Engineers and developers can analyze system health, usage patterns, and errors in real time.
+
+| Aspect                  | Example                           |
+| ----------------------- | --------------------------------- |
+| **System performance**  | CPU usage, memory, disk I/O       |
+| **Application metrics** | User behavior, API response times |
+| **Error reporting**     | Crash logs, exception traces      |
+| **Security info**       | Intrusion attempts, auth failures |
+
+Software development: Tools like Visual Studio or JetBrains may send anonymized usage stats to improve features.
+Cloud monitoring: Services like AWS CloudWatch, Azure Monitor, or Prometheus use telemetry to track resource health.
+Game analytics: Games send telemetry to understand user engagement, bugs, and progression bottlenecks.
+IoT devices: Devices like smart thermostats or industrial sensors report status via telemetry.
