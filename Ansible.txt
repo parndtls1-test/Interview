@@ -1,0 +1,71 @@
+Purpose: Automation → config mgmt, deployment, orchestration
+Agentless: Uses SSH (Linux) / WinRM (no software needed on Windows)
+Language: Python core, YAML playbooks
+Push Model: Control node pushes config to managed nodes
+Idempotent: Same playbook → same result
+
+| Term             | Meaning                                          |
+| ---------------- | ------------------------------------------------ |
+| **Control Node** | Where Ansible runs                               |
+| **Managed Node** | Target machines                                  |
+| **Inventory**    | Host list (INI, YAML, dynamic)                   |
+| **Module**       | Reusable unit of work (`apt`, `copy`, `service`) |
+| **Task**         | A single module call                             |
+| **Playbook**     | YAML list of plays/tasks                         |
+| **Role**         | Organized automation set                         |
+| **Handler**      | Triggered on change                              |
+| **Facts**        | Auto-gathered system info                        |
+| **Templates**    | Dynamic configs via Jinja2                       |
+
+ Common Interview Q&A
+Pull vs Push? → Push (default)
+Static vs Dynamic inventory? → File vs cloud-generated
+Idempotent? → No unintended repeated changes
+command vs shell? → command = safe, shell = full shell access
+Speed-up? → forks, gather_facts: no, async tasks
+Modules? → apt, yum, copy, template, file, service, git
+
+YAML
+- hosts: web
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt: { name: nginx, state: present, update_cache: yes }
+    - name: Start Nginx
+      service: { name: nginx, state: started }
+
+commands:
+ansible all -m ping                 # Connectivity test
+ansible all -a "uptime"             # Ad-hoc command
+ansible-playbook site.yml           # Run playbook
+ansible-inventory --list            # View inventory
+ansible-doc -l                      # List modules
+
+Variables Precedence (High → Low)
+CLI -e
+Task vars
+Block vars
+Role vars
+Play vars
+Host/group vars
+Role defaults
+
+Loops & Conditions
+- apt: { name: "{{ item }}", state: present }
+  loop: [git, curl]
+  when: ansible_facts['os_family'] == "Debian"
+
+Handlers
+tasks:
+  - template: { src: nginx.conf.j2, dest: /etc/nginx/nginx.conf }
+    notify: Restart nginx
+handlers:
+  - name: Restart nginx
+    service: { name: nginx, state: restarted }
+
+Vault
+ansible-vault create secrets.yml
+ansible-vault encrypt file.yml
+ansible-playbook play.yml --ask-vault-pass
+
+
