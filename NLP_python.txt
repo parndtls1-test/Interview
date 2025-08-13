@@ -1,0 +1,251 @@
+
+# Natural language processing
+text = "Millions of people across the UK and beyond have celebrated the coronation of King Charles III - a symbolic ceremony combining a religious service and pageantry. The ceremony was held at Westminster Abbey, with the King becoming the 40th reigning monarch to be crowned there since 1066. Queen Camilla was crowned alongside him before a huge parade back to Buckingham Palace. Here's how the day of splendour and formality, which featured customs dating back more than 1,000 years, unfolded."
+
+# Segmentation
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize
+
+# Split text into sentences
+sentences = sent_tokenize(text)
+sentences
+['Millions of people across the UK and beyond have celebrated the coronation of King Charles III - a symbolic ceremony combining a religious service and pageantry.',
+ 'The ceremony was held at Westminster Abbey, with the King becoming the 40th reigning monarch to be crowned there since 1066.',
+ 'Queen Camilla was crowned alongside him before a huge parade back to Buckingham Palace.',
+ "Here's how the day of splendour and formality, which featured customs dating back more than 1,000 years, unfolded."]
+sentences[2]
+'Queen Camilla was crowned alongside him before a huge parade back to Buckingham Palace.'
+# Punctuation removal
+import re
+
+# Remove punctuation characters
+text = re.sub(r"[^a-zA-Z0-9]", " ", sentences[2]) 
+text
+'Queen Camilla was crowned alongside him before a huge parade back to Buckingham Palace '
+
+# Tokenization
+from nltk.tokenize import word_tokenize
+words = word_tokenize(text)
+print(words)
+['Queen', 'Camilla', 'was', 'crowned', 'alongside', 'him', 'before', 'a', 'huge', 'parade', 'back', 'to', 'Buckingham', 'Palace']
+
+# Removal of stop words
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+
+# Remove stop words
+words = [w for w in words if w not in stopwords.words("english")]
+print(words)
+['Queen', 'Camilla', 'crowned', 'alongside', 'huge', 'parade', 'back', 'Buckingham', 'Palace']
+# have a look at the stop words in nltk's corpus
+print(stopwords.words("spanish"))
+['de', 'la', 'que', 'el', 'en', 'y', 'a', 'los', 'del', 'se', 'las', 'por', 'un', 'para', 'con', 'no', 'una', 'su', 'al', 'lo', 'como', 'más', 'pero', 'sus', 'le', 'ya', 'o', 'este', 'sí', 'porque', 'esta', 'entre', 'cuando', 'muy', 'sin', 'sobre', 'también', 'me', 'hasta', 'hay', 'donde', 'quien', 'desde', 'todo', 'nos', 'durante', 'todos', 'uno', 'les', 'ni', 'contra', 'otros', 'ese', 'eso', 'ante', 'ellos', 'e', 'esto', 'mí', 'antes', 'algunos', 'qué', 'unos', 'yo', 'otro', 'otras', 'otra', 'él', 'tanto', 'esa', 'estos', 'mucho', 'quienes', 'nada', 'muchos', 'cual', 'poco', 'ella', 'estar', 'estas', 'algunas', 'algo', 'nosotros', 'mi', 'mis', 'tú', 'te', 'ti', 'tu', 'tus', 'ellas', 'nosotras', 'vosotros', 'vosotras', 'os', 'mío', 'mía', 'míos', 'mías', 'tuyo', 'tuya', 'tuyos', 'tuyas', 'suyo', 'suya', 'suyos', 'suyas', 'nuestro', 'nuestra', 'nuestros', 'nuestras', 'vuestro', 'vuestra', 'vuestros', 'vuestras', 'esos', 'esas', 'estoy', 'estás', 'está', 'estamos', 'estáis', 'están', 'esté', 'estés', 'estemos', 'estéis', 'estén', 'estaré', 'estarás', 'estará', 'estaremos', 'estaréis', 'estarán', 'estaría', 'estarías', 'estaríamos', 'estaríais', 'estarían', 'estaba', 'estabas', 'estábamos', 'estabais', 'estaban', 'estuve', 'estuviste', 'estuvo', 'estuvimos', 'estuvisteis', 'estuvieron', 'estuviera', 'estuvieras', 'estuviéramos', 'estuvierais', 'estuvieran', 'estuviese', 'estuvieses', 'estuviésemos', 'estuvieseis', 'estuviesen', 'estando', 'estado', 'estada', 'estados', 'estadas', 'estad', 'he', 'has', 'ha', 'hemos', 'habéis', 'han', 'haya', 'hayas', 'hayamos', 'hayáis', 'hayan', 'habré', 'habrás', 'habrá', 'habremos', 'habréis', 'habrán', 'habría', 'habrías', 'habríamos', 'habríais', 'habrían', 'había', 'habías', 'habíamos', 'habíais', 'habían', 'hube', 'hubiste', 'hubo', 'hubimos', 'hubisteis', 'hubieron', 'hubiera', 'hubieras', 'hubiéramos', 'hubierais', 'hubieran', 'hubiese', 'hubieses', 'hubiésemos', 'hubieseis', 'hubiesen', 'habiendo', 'habido', 'habida', 'habidos', 'habidas', 'soy', 'eres', 'es', 'somos', 'sois', 'son', 'sea', 'seas', 'seamos', 'seáis', 'sean', 'seré', 'serás', 'será', 'seremos', 'seréis', 'serán', 'sería', 'serías', 'seríamos', 'seríais', 'serían', 'era', 'eras', 'éramos', 'erais', 'eran', 'fui', 'fuiste', 'fue', 'fuimos', 'fuisteis', 'fueron', 'fuera', 'fueras', 'fuéramos', 'fuerais', 'fueran', 'fuese', 'fueses', 'fuésemos', 'fueseis', 'fuesen', 'sintiendo', 'sentido', 'sentida', 'sentidos', 'sentidas', 'siente', 'sentid', 'tengo', 'tienes', 'tiene', 'tenemos', 'tenéis', 'tienen', 'tenga', 'tengas', 'tengamos', 'tengáis', 'tengan', 'tendré', 'tendrás', 'tendrá', 'tendremos', 'tendréis', 'tendrán', 'tendría', 'tendrías', 'tendríamos', 'tendríais', 'tendrían', 'tenía', 'tenías', 'teníamos', 'teníais', 'tenían', 'tuve', 'tuviste', 'tuvo', 'tuvimos', 'tuvisteis', 'tuvieron', 'tuviera', 'tuvieras', 'tuviéramos', 'tuvierais', 'tuvieran', 'tuviese', 'tuvieses', 'tuviésemos', 'tuvieseis', 'tuviesen', 'teniendo', 'tenido', 'tenida', 'tenidos', 'tenidas', 'tened']
+
+# Stemming and lemmatization
+nltk.download('wordnet') # download for lemmatization
+nltk.download('omw-1.4')
+from nltk.tokenize import word_tokenize
+# Stemming
+from nltk.stem.porter import PorterStemmer
+
+# Reduce words to their stems
+stemmed = [PorterStemmer().stem(w) for w in words]
+print(stemmed)
+['queen', 'camilla', 'crown', 'alongsid', 'huge', 'parad', 'back', 'buckingham', 'palac']
+
+# Lemmatize
+from nltk.stem.wordnet import WordNetLemmatizer
+
+# Reduce words to their root form
+lemmatized = [WordNetLemmatizer().lemmatize(w) for w in words]
+print(lemmatized)
+['Queen', 'Camilla', 'crowned', 'alongside', 'huge', 'parade', 'back', 'Buckingham', 'Palace']
+
+# Another stemming and lemmatization example
+words2 = ['wait', 'waiting' , 'studies', 'studying', 'computers']
+
+# Stemming
+# Reduce words to their stems
+stemmed = [PorterStemmer().stem(w) for w in words2]
+print("Stemming output: {}".format(stemmed))
+
+# Lemmatization
+# Reduce words to their root form
+lemmatized = [WordNetLemmatizer().lemmatize(w) for w in words2]
+print("Lemmatization output: {}".format(lemmatized))
+# Stemming output: ['wait', 'wait', 'studi', 'studi', 'comput']
+# Lemmatization output: ['wait', 'waiting', 'study', 'studying', 'computer']
+
+# Part of speech tagging
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+
+from nltk import pos_tag
+# tag each word with part of speech
+pos_tag(words)
+[('Queen', 'NNP'),
+ ('Camilla', 'NNP'),
+ ('crowned', 'VBD'),
+ ('alongside', 'RB'),
+ ('huge', 'JJ'),
+ ('parade', 'NN'),
+ ('back', 'RB'),
+ ('Buckingham', 'NNP'),
+ ('Palace', 'NNP')]
+"""
+POS
+
+CC: It is the conjunction of coordinating
+CD: It is a digit of cardinal
+DT: It is the determiner
+EX: Existential
+FW: It is a foreign word
+IN: Preposition and conjunction
+JJ: Adjective
+JJR and JJS: Adjective and superlative
+LS: List marker
+MD: Modal
+NN: Singular noun
+NNS, NNP, NNPS: Proper and plural noun
+PDT: Predeterminer
+WRB: Adverb of wh
+WP$: Possessive wh
+WP: Pronoun of wh
+WDT: Determiner of wp
+VBZ: Verb
+VBP, VBN, VBG, VBD, VB: Forms of verbs
+UH: Interjection
+TO: To go
+RP: Particle
+RBS, RB, RBR: Adverb
+PRP, PRP$: Pronoun personal and professional
+
+"""
+'\nPOS\n\nCC: It is the conjunction of coordinating\nCD: It is a digit of cardinal\nDT: It is the determiner\nEX: Existential\nFW: It is a foreign word\nIN: Preposition and conjunction\nJJ: Adjective\nJJR and JJS: Adjective and superlative\nLS: List marker\nMD: Modal\nNN: Singular noun\nNNS, NNP, NNPS: Proper and plural noun\nPDT: Predeterminer\nWRB: Adverb of wh\nWP$: Possessive wh\nWP: Pronoun of wh\nWDT: Determiner of wp\nVBZ: Verb\nVBP, VBN, VBG, VBD, VB: Forms of verbs\nUH: Interjection\nTO: To go\nRP: Particle\nRBS, RB, RBR: Adverb\nPRP, PRP$: Pronoun personal and professional\n\n'
+# Named entity recognition
+from nltk import ne_chunk
+nltk.download('words')
+
+ner_tree = ne_chunk(pos_tag(word_tokenize(sentences[2])))
+print(ner_tree)
+'''(S
+  (PERSON Queen/NNP)
+  (PERSON Camilla/NNP)
+  was/VBD
+  crowned/VBN
+  alongside/RB
+  him/PRP
+  before/IN
+  a/DT
+  huge/JJ
+  parade/NN
+  back/RB
+  to/TO
+  (PERSON Buckingham/NNP Palace/NNP)
+  ./.)'''
+text = "Millions of people across the UK and beyond have celebrated the coronation of King Charles III - a symbolic ceremony combining a religious service and pageantry. The ceremony was held at Westminster Abbey, with the King becoming the 40th reigning monarch to be crowned there since 1066. Queen Camilla was crowned alongside him before a huge parade back to Buckingham Palace. Here's how the day of splendour and formality, which featured customs dating back more than 1,000 years, unfolded."
+
+ner_tree = ne_chunk(pos_tag(word_tokenize(text)))
+print(ner_tree)
+'''(S
+  Millions/NNS
+  of/IN
+  people/NNS
+  across/IN
+  the/DT
+  (ORGANIZATION UK/NNP)
+  and/CC
+  beyond/IN
+  have/VBP
+  celebrated/VBN
+  the/DT
+  coronation/NN
+  of/IN
+  King/NNP
+  (PERSON Charles/NNP III/NNP)
+  -/:
+  a/DT
+  symbolic/JJ
+  ceremony/NN
+  combining/VBG
+  a/DT
+  religious/JJ
+  service/NN
+  and/CC
+  pageantry/NN
+  ./.
+  The/DT
+  ceremony/NN
+  was/VBD
+  held/VBN
+  at/IN
+  (ORGANIZATION Westminster/NNP Abbey/NNP)
+  ,/,
+  with/IN
+  the/DT
+  King/NNP
+  becoming/VBG
+  the/DT
+  40th/CD
+  reigning/VBG
+  monarch/NN
+  to/TO
+  be/VB
+  crowned/VBN
+  there/RB
+  since/IN
+  1066/CD
+  ./.
+  (PERSON Queen/NNP Camilla/NNP)
+  was/VBD
+  crowned/VBN
+  alongside/RB
+  him/PRP
+  before/IN
+  a/DT
+  huge/JJ
+  parade/NN
+  back/RB
+  to/TO
+  (PERSON Buckingham/NNP Palace/NNP)
+  ./.
+  Here/RB
+  's/VBZ
+  how/WRB
+  the/DT
+  day/NN
+  of/IN
+  splendour/NN
+  and/CC
+and/CC
+formality/NN
+,/, ,/,
+  which/WDT
+  featured/VBD
+  customs/NNS
+  dating/VBG
+  back/RB
+  more/JJR
+  than/IN
+  1,000/CD
+  years/NNS
+  ,/,
+  unfolded/VBD
+  ./.)'''
+text = "Twitter CEO Elon Musk arrived at the Staples Center in Los Angeles, California. "
+ner_tree = ne_chunk(pos_tag(word_tokenize(text)))
+print(ner_tree)
+'''(S
+  (PERSON Twitter/NNP)
+  (ORGANIZATION CEO/NNP Elon/NNP Musk/NNP)
+  arrived/VBD
+  at/IN
+  the/DT
+  (FACILITY Staples/NNP Center/NNP)
+  in/IN
+  (GPE Los/NNP Angeles/NNP)
+  ,/,
+  (GPE California/NNP)
+  ./.)''' 
+ 
