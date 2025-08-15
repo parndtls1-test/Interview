@@ -1,0 +1,9 @@
+The model is given a sentence with a word replaced by a [MASK] token. It then uses the surrounding words to predict the most likely word that fits in the masked position. This process helps the model understand the relationships between words in both directions.
+
+Original Sentence:
+The car drove down the long road.
+
+Training Example with Masking:
+The car drove down the [MASK] road.
+
+In this example, the model would analyze the context ("The car drove down the... road") and predict a word that fits logically. Possible predictions might include "long," "winding," "dusty," or "bumpy."
