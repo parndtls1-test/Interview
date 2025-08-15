@@ -1,0 +1,16 @@
+RAG - Retrieval-Augmented Generation.
+
+Framework that combines a retrieval system with a large language model (LLM)
+to generate more accurate and contextually relevant responses.
+
+How RAG Works
+  Retrieval: 
+    The system first searches through a vast knowledge base (like your organizations internal documents, a company website, or a set of PDFs) to find the most relevant information related to a users query. This is done using a similarity search on vector embeddings.
+
+Augmentation: 
+  The retrieved information is then added to the users original prompt. This provides the LLM with a specific, factual context.
+
+Generation: 
+  The LLM receives the augmented prompt (the original query plus the retrieved context) and generates a response based on the provided information, rather than relying on its general training data.
+
+This process helps to prevent the LLM from generating inaccurate or "hallucinated" information.
