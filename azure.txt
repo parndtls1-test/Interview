@@ -1,0 +1,39 @@
+- Similarity Search
+  Allows you to find documents or pieces of information 
+  that are semantically or contextually similar to a given query, rather than just matching keywords. 
+  It goes beyond traditional keyword search by understanding the meaning and intent behind the text.
+
+- Open Compute
+  collaborative community focused on redesigning hardware for more efficient and scalable data centers
+
+- Azure SQL
+  single product but a collection of services tailored to different needs
+  SQL Database - SQL Managed Instance - SQL Server on virtual machines
+
+- Open AI
+  gives businesses access to powerful AI models from OpenAI, 
+  such as the GPT series (GPT-3, GPT-4, etc.) and DALL-E
+
+- API Handling
+  Fully managed service that helps organizations publish, secure, transform, and monitor their APIs. 
+  It acts as a single front door for all your APIs
+
+- Logon from python
+  from azure.identity import DefaultAzureCredential
+  from azure.storage.blob import BlobServiceClient
+
+  # Authenticate with Azure CLI / Managed Identity / Env vars automatically
+  credential = DefaultAzureCredential()
+
+  # Your Azure Storage account URL
+  account_url = "https://<your-storage-account>.blob.core.windows.net"
+
+  # Create the BlobServiceClient
+  blob_service_client = BlobServiceClient(account_url=account_url, credential=credential)
+
+  # Example: list containers
+  print("Containers:")
+  for container in blob_service_client.list_containers():
+      print("-", container['name'])
+
+blob = Binary Large Object
